@@ -2,6 +2,8 @@
 
 A PlatformIO firmware derived from [SensorsIot's DCF77 transmitter](https://github.com/SensorsIot/DCF77-Transmitter-for-ESP32), with captive Wi-Fi setup, a web configuration page, and automatic **America/Los_Angeles** time. It sends Pacific wall-clock time: PST (UTC−8) in winter and PDT (UTC−7) in summer. No manual offset is needed.
 
+I bought a [cheap DCF-77 receiver module](https://www.amazon.com/dp/B0H6MHKKTF) and used its antenna for the transmitter (In fact I bought two of them so that I could use the second as a receiver to test the transmitter). This was much easier than trying to make an antenna myself.
+
 ## Pins and wiring
 
 **Use GPIO4 for the antenna, not the original sketch's GPIO15.** GPIO15 belongs to the C3's flash interface and is not brought out on the usual SuperMini headers. GPIO4 and GPIO5 are available header outputs. They are neither boot strapping pins nor the native USB pins. The board's built-in LED is GPIO8; GPIO5 below is for your external LED.
