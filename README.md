@@ -15,6 +15,14 @@ I bought a [cheap DCF-77 receiver module](https://www.amazon.com/dp/B0H6MHKKTF) 
 | Setup button | Onboard BOOT button, GPIO9 |
 | Power, upload, serial | USB-C, using a data-capable cable |
 
+### Wiring diagram
+
+View the board from the **component side, with USB-C at the top**. Power it over USB-C and connect the external LED and antenna as shown. Both return wires connect to the board's **GND** pin.
+
+![ESP32-C3 SuperMini wiring: GPIO5 through 330 ohms to the LED anode, with its cathode to GND; GPIO4 through 1 kiloohm and the antenna to GND. Component-side view, USB-C at the top.](docs/wiring.svg)
+
+The LED's **anode (+)** is usually the longer leg; its **cathode (−)** is the shorter leg beside the flat edge of the package. GPIO5 is marked **`5`** on the board; **`5V`** is a different pin. The diagram uses a 330 Ω LED resistor; values up to 1 kΩ also work, with a dimmer LED.
+
 GPIO numbers refer to the labels on the board, not physical header positions. Pins are defined in [include/Board.h](include/Board.h). Keep the antenna resistor; the output is a 3.3 V GPIO driver. Reception depends on the antenna's tuning, orientation, distance and the receiving clock.
 
 References: [Espressif C3 GPIO restrictions](https://docs.espressif.com/projects/esp-idf/en/stable/esp32c3/api-reference/peripherals/gpio.html), [Espressif's SuperMini variant pin definitions](https://github.com/espressif/arduino-esp32/blob/master/variants/nologo_esp32c3_super_mini/pins_arduino.h).

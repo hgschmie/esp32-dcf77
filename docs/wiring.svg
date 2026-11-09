@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="720" viewBox="0 0 1080 720" role="img" aria-labelledby="title description">
+  <title id="title">ESP32-C3 SuperMini DCF77 transmitter wiring</title>
+  <desc id="description">Component side facing you, USB-C at the top. GPIO5 connects through a 330 ohm resistor to the LED anode; its cathode connects to ground. GPIO4 connects through a 1 kiloohm resistor to a tuned ferrite antenna or loop, whose other terminal connects to ground. Both returns connect to the board's GND pin. Power the board over USB-C.</desc>
+  <defs>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #172b3a; font-size: 19px; }
+      .heading { font-size: 27px; font-weight: 700; }
+      .label { font-size: 21px; font-weight: 600; }
+      .small { font-size: 17px; }
+      .muted { fill: #526575; }
+      .pin-label { fill: #e6edf2; font-size: 18px; }
+      .wire { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .led-wire { stroke: #146caa; }
+      .antenna-wire { stroke: #ad530b; }
+      .ground { stroke: #526575; }
+      .component { fill: white; stroke: #172b3a; stroke-width: 3; }
+    </style>
+    <marker id="light-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#146caa"/>
+    </marker>
+  </defs>
+  <rect width="1080" height="720" fill="#ffffff"/>
+  <text x="540" y="42" text-anchor="middle" class="heading">DCF77 transmitter wiring</text>
+  <text x="540" y="73" text-anchor="middle" class="muted">Component side facing you · USB-C at the top</text>
+
+  <!-- Physical header positions match the SuperMini component-side view. -->
+  <rect x="400" y="155" width="240" height="410" rx="16" fill="#183d4a"/>
+  <rect x="478" y="126" width="84" height="58" rx="8" fill="#d8e0e5" stroke="#526575" stroke-width="2"/>
+  <rect x="490" y="133" width="60" height="12" rx="5" fill="#526575"/>
+  <text x="520" y="114" text-anchor="middle" class="small">Power via USB-C</text>
+  <text x="520" y="530" text-anchor="middle" class="pin-label">ESP32-C3</text>
+  <text x="520" y="552" text-anchor="middle" class="pin-label">SuperMini</text>
+
+  <g fill="#d9c68a" stroke="#fff" stroke-width="2">
+    <circle cx="400" cy="225" r="7"/><circle cx="400" cy="263" r="7"/>
+    <circle cx="400" cy="301" r="7"/><circle cx="400" cy="339" r="7"/>
+    <circle cx="400" cy="377" r="7"/><circle cx="400" cy="415" r="7"/>
+    <circle cx="400" cy="453" r="7"/><circle cx="400" cy="491" r="7"/>
+    <circle cx="640" cy="225" r="7"/><circle cx="640" cy="263" r="7"/>
+    <circle cx="640" cy="301" r="7"/><circle cx="640" cy="339" r="7"/>
+    <circle cx="640" cy="377" r="7"/><circle cx="640" cy="415" r="7"/>
+    <circle cx="640" cy="453" r="7"/><circle cx="640" cy="491" r="7"/>
+  </g>
+  <g class="pin-label">
+    <text x="419" y="231" class="pin-label">GPIO5</text><text x="419" y="269" class="pin-label">GPIO6</text>
+    <text x="419" y="307" class="pin-label">GPIO7</text><text x="419" y="345" class="pin-label">GPIO8</text>
+    <text x="419" y="383" class="pin-label">GPIO9</text><text x="419" y="421" class="pin-label">GPIO10</text>
+    <text x="419" y="459" class="pin-label">GPIO20</text><text x="419" y="497" class="pin-label">GPIO21</text>
+    <text x="621" y="231" text-anchor="end" class="pin-label">5V</text><text x="621" y="269" text-anchor="end" class="pin-label">GND</text>
+    <text x="621" y="307" text-anchor="end" class="pin-label">3V3</text><text x="621" y="345" text-anchor="end" class="pin-label">GPIO4</text>
+    <text x="621" y="383" text-anchor="end" class="pin-label">GPIO3</text><text x="621" y="421" text-anchor="end" class="pin-label">GPIO2</text>
+    <text x="621" y="459" text-anchor="end" class="pin-label">GPIO1</text><text x="621" y="497" text-anchor="end" class="pin-label">GPIO0</text>
+  </g>
+
+  <!-- LED series path: GPIO5 -> resistor -> anode -> cathode -> GND. -->
+  <path d="M 400 225 H 150 V 283" class="wire led-wire"/>
+  <text x="150" y="205" class="label">External LED</text>
+  <rect x="138" y="283" width="24" height="60" class="component"/>
+  <text x="184" y="320" class="label">330 Ω</text>
+  <path d="M 150 343 V 421" class="wire led-wire"/>
+  <path d="M 132 421 H 168 L 150 451 Z" class="component"/>
+  <path d="M 132 451 H 168" class="wire led-wire"/>
+  <path d="M 172 422 L 188 405 M 179 436 L 195 419" class="wire led-wire" marker-end="url(#light-arrow)"/>
+  <text x="210" y="408" class="small">Anode (+)</text>
+  <text x="210" y="431" class="small muted">Usually the long leg</text>
+  <text x="185" y="489" class="small">Cathode (−)</text>
+  <text x="185" y="512" class="small muted">Short leg / flat edge</text>
+  <path d="M 150 451 V 640" class="wire ground"/>
+
+  <!-- Antenna series path: GPIO4 -> resistor -> antenna -> GND. -->
+  <path d="M 640 339 H 790 V 380" class="wire antenna-wire"/>
+  <text x="718" y="317" class="label">DCF77 antenna</text>
+  <rect x="778" y="380" width="24" height="60" class="component"/>
+  <text x="824" y="418" class="label">1 kΩ</text>
+  <path d="M 790 440 V 476
+           C 820 476 820 496 790 496
+           C 820 496 820 516 790 516
+           C 820 516 820 536 790 536
+           C 820 536 820 556 790 556" class="wire antenna-wire"/>
+  <text x="834" y="502" class="small">Tuned ferrite</text>
+  <text x="834" y="526" class="small">antenna / loop</text>
+  <path d="M 790 556 V 640" class="wire ground"/>
+
+  <!-- Both component returns use the board's single GND header pin. -->
+  <path d="M 640 263 H 1000 V 640 H 150 M 540 640 V 657 M 521 657 H 559 M 527 666 H 553 M 534 675 H 546" class="wire ground"/>
+  <circle cx="790" cy="640" r="5" fill="#526575"/>
+  <circle cx="540" cy="640" r="5" fill="#526575"/>
+  <text x="540" y="614" text-anchor="middle" class="small">Shared ground: both returns connect to GND</text>
+  <text x="540" y="704" text-anchor="middle" class="small muted">Board label “5” means GPIO5. The separate “5V” pin is a power pin.</text>
+</svg>
