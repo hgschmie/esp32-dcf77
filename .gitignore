@@ -2,4 +2,5 @@
 .pio-core/
 .vscode/
 .DS_Store
-
+case/output/*
+output/*
